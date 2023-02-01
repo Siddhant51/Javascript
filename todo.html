@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .input {
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #textbox {
+            width: 300px;
+            height: 30px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        #addBtn {
+            background-color: rgb(47, 212, 105);
+            padding: 5px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: azure;
+        }
+
+        .content {
+            padding-top: 10px;
+        }
+
+        .removeBtn {
+            background-color: rgb(235, 83, 41);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            border-left: 3px solid;
+            padding: 5px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: azure;
+            border-color: black;
+        }
+
+        .todo {
+            border: 1px solid;
+            display: flex;
+            justify-content: space-between;
+            /* width: 400px; */
+            padding: 0px;
+            border-radius: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style> -->
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0pxs;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: sans-serif;
+            background-color: aliceblue;
+        }
+
+        .header {
+            padding: 10px;
+            width: 100%;
+            background-color: rgb(83, 83, 223);
+            color: aliceblue;
+            box-shadow: 3px 3px 30px grey;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px;
+            width: 400px;
+            height: 500px;
+            background-color: white;
+            box-shadow: 3px 3px 30px grey;
+            padding: 10px;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: row;
+            padding-bottom: 10px;
+            border-bottom: 1px solid;
+        }
+
+        #textbox {
+            height: 30px;
+            width: 350px;
+            border: none;
+            outline: none;
+            font-size: large;
+        }
+
+        #addBtn {
+            background: rgb(57, 214, 9);
+            border: none;
+            padding: 5px;
+            color: aliceblue;
+        }
+        
+        .todoList{
+            width: 400px;
+            padding: 10px;
+        }
+        
+        .todo {
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 390px;
+        }
+        
+        .removeBtn{
+            background: rgb(233, 62, 62);
+            color: aliceblue;
+            border: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Todo List</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="input">
+            <input type="text" id="textbox" required>
+            <button type="button" id="addBtn">Add</button>
+        </div>
+
+        <div id="todoList">
+            
+        </div>
+
+
+    </div>
+
+    <script>
+
+        const addBtn = document.getElementById("addBtn");
+
+        addBtn.addEventListener("click", () => {
+            const textbox = document.getElementById("textbox");
+
+            const todoList = document.getElementById("todoList");
+
+            let newLi = document.createElement("div");
+            newLi.className = "todo";
+            newLi.innerHTML = `<h3>${textbox.value}</h3><button class="removeBtn" onclick="remove(this)">Remove</button>`;
+
+            if (textbox.value) {
+                todoList.appendChild(newLi);
+            }
+
+            textbox.value = null;
+        });
+
+        function remove(element) {
+            element.parentElement.remove();
+        }
+
+    </script>
+</body>
+
+</html>
